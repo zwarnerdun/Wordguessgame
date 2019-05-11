@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Fashion Hangman!</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Fredericka+the+Great" rel="stylesheet">
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</header>
+    
+<body>
+    <div class="background">
+        <img src="assets/images/fashion.png" alt="background" class="background">
+    </div>
+    <div class="container">
+
+        <h2>Press Any Key To Guess This Word!</h2>
+       <!--Spaces for words-->
+        <div>
+            <h3 id="currentword">_ _ _ _ _</h3>
+        </div>
+        <br>
+        <div id="scoreboard">
+            <!--Guesses left -->
+            <div class="sidebar">
+                <h3>GUESSES LEFT:
+                    <span id="guessesremaining"></span>
+                </h3>
+            </div>
+            <br>
+            <!--Wins -->
+            <div class="sidebar">
+                <h3>WINS:
+                    <span id="winstracker"></span>
+                </h3>
+            </div>
+            <br>
+            <!--Loss tracker-->
+            <div class="sidebar">
+                <h3>LOSSES:
+                    <span id="losstracker"></span>
+                </h3>
+            </div>
+            <br>
+            <!--# of wrong guesses-->
+            <div class="sidebar">
+                <h3>LETTERS YOU GUESSED WRONG:
+                    <span id="playerguesses"></span>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
