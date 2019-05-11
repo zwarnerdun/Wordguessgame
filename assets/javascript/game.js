@@ -1,45 +1,39 @@
 // Make an array of words
-var fashionshirts = [
-    "Tunic",
-    "Frock",
-    "Peplum",
-    "Poncho",
-    "Gypsy"
-];
+var fashionshirts = ["Tunic", "Frock", "Peplum", "Poncho", "Gypsy"]; 
 
-// Pick a random word
-var currentword = fashionshirts[Math.floor(Math.random()* fashionshirts.length)];
 //memory
-var currentword = 0
-var guessesleft=[]
-var wins=0
-var losses=0
-var lettersyouguessedwrong=0
-// Answers
-for (var i = 0; i < fashionshirts[currentword].length; i++) {
-    fashionanswers.push = "_";
+var randomshirts = "";
+var lettersofname = [];
+var blanks = 0;
+var blanksandcorrect = [];
+var wrongguess = [];
 
-}
+//Keep score
+var Wins = 0;
+var Losses = 0;
+var RemainingGuesses = 5;
 
-var remainingletters = fashionshirts.length;
+function Game() {
+    // Pick a random word
+    randomshirts = fashionshirts[Math.floor(Math.random()* fashionshirts.length)];
 
-while (remainingletters > 0) {
-    alert (fashionanswers.join (" "));
-}
+    //seperates words individually and stores in new array
+    lettersofname = randomshirts.split("");
 
-//Guess from player
-var Guess = prompt("Press any key to get started!");
-if (guess === null) {
-    // This is to exit
-    stop;
-} else if (guess.length !== 1) {
-    alert ("Please enter only one letter.");
+    //letters not used
+    blanks = lettersofname.length;
 
-} else {
-    for (var j = 0; j < fashionshirts.length; j++);{
-        if (word [j] === guess){
-            fashionanswers[j] = guess;
-            remainingletters--;
-        }
+    // Answers
+    for (var i = 0; i < blanks; i++) {
+        blanksandcorrect.push("_");
     }
+
+    document.getElementById("currentword").innerHTML = "  " + blanksandcorrect.join("  ");
+
+    //logging the consoles 
+    console.log(randomshirts);
+    console.log(lettersofname);
+    console.log(blanks);
+    console.log(blanksandcorrect);
+
 }
