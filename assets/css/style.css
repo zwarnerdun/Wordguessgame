@@ -1,0 +1,19 @@
+.background{
+    padding-top: 25px;
+	padding-left: 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.container{
+    padding-top: 500px;
+    padding-bottom: 500px;
+    padding-left: 400px;
+    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Berkshire Swash', cursive;
+}
+#title{
+    display: none;
+}
+
