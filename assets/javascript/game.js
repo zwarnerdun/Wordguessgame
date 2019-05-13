@@ -1,5 +1,5 @@
 // Make an array of words
-var fashionshirts = ["Tunic", "Frock", "Peplum", "Poncho", "Gypsy"]; 
+var fashionshirts = ["tunic", "frock", "peplum", "poncho", "gypsy"]; 
 
 //memory
 var randomshirts = "";
@@ -9,41 +9,52 @@ var blanksandcorrect = [];
 var wrongguess = [];
 
 //Keep score
-var Wins = 0;
-var Losses = 0;
-var RemainingGuesses = 5;
+var wins = 0;
+var losses = 0;
+var remainingguesses = 5;
+
 
 function Game() {
-    window.onkeypress = function Game() {
+    
         
-        // Pick a random word
-        randomshirts = fashionshirts[Math.floor(Math.random()* fashionshirts.length)];
+    // Pick a random word
+    randomshirts = fashionshirts[Math.floor(Math.random()* fashionshirts.length)];
 
-        //seperates words individually and stores in new array
-        lettersofname = randomshirts.split("");
+    //seperates words individually and stores in new array
+    lettersofname = randomshirts.split("");
 
-        //letters not used
-        blanks = lettersofname.length;
+    //letters not used
+    console.log("WORD CHOSEN " + randomshirts);
+    blanks = lettersofname.length;
 
-        // Answers
-        for (var i = 0; i < blanks; i++) {
-            blanksandcorrect.push("_");
-        }
+    // Answers
+    for (var i = 0; i < blanks; i++) {
+        blanksandcorrect.push("_");
+    }
 
-        document.getElementById("currentword").innerHTML = "  " + blanksandcorrect.join("  ");
+    document.getElementById("currentword").innerHTML = "  " + blanksandcorrect.join("  ");
 
-        //logging the consoles 
-        console.log(randomshirts);
-        console.log(lettersofname);
-        console.log(blanks);
-        console.log(blanksandcorrect);
 
-    };
+    //logging the consoles 
+    console.log(randomshirts);
+    console.log(lettersofname);
+    console.log(blanks);
+    console.log(blanksandcorrect);
+
+    
+}
+
+function reset() {
+    remainingguesses = 5;
+    wrongguess = [];
+    blanksandcorrect = [];
+    Game();
 }
 
 function checkLetters(letter) {
     var letterInWord = false;
-    //if the generated randomword is equal to the letter entered... then variable is true
+    //if the generated randomshirts is equal to the letter entered... then variable is true
+    console.log("LETTER IS " + letter);
     for (var i = 0; i < blanks; i++) {
         if (randomshirts[i] == letter) {
             letterInWord = true;
@@ -72,25 +83,24 @@ function checkLetters(letter) {
 
 //check to see if player won...
 function complete() {
-    console.log("wins:" + Wins + "| losses:" + Losses + "| guesses left:" + RemainingGuesses)
+    console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + remainingguesses)
 
-    //if WON...then alert, play audio, display image and reset new round
     if (lettersofname.toString() == blanksandcorrect.toString()) {
-        Wins++;
+        wins++;
         reset()
         //display wins on screen
-        document.getElementById("winstracker").innerHTML = " " + Wins;
+        document.getElementById("winstracker").innerHTML = " " + wins;
 
         //if LOST...then alert and reset new round
-    } else if (RemainingGuesses === 0) {
-        Losses++;
+    } else if (remainingguesses === 0) {
+        losses++;
         reset();
-        // document.getElementById("image").src = "./assets/images/try-again.png"
-        document.getElementById("losstracker").innerHTML = " " + Losses;
+
+        document.getElementById("losstracker").innerHTML = " " + losses;
     }
     //display losses on screen && guesses remaining countdown
     document.getElementById("currentword").innerHTML = "  " + blanksandcorrect.join(" ");
-    document.getElementById("RemainingGuesses").innerHTML = " " + RemainingGuesses;
+    document.getElementById("RemainingGuesses").innerHTML = " " + remainingguesses;
 }
 
 
@@ -105,7 +115,7 @@ function complete() {
 //check for keyup, and convert to lowercase then store in guesses
 document.onkeyup = function (event) {
     var guesses = String.fromCharCode(event.keyCode).toLowerCase();
-    //check to see if guess entered matches value of random word
+    //check to see if guess entered matches value of fashionshirts
     checkLetters(guesses);
     //process wins/loss 
     complete();
@@ -116,9 +126,4 @@ document.onkeyup = function (event) {
     document.getElementById("playerguesses").innerHTML = "  " + wrongguess.join(" ");
 }
 
-function reset() {
-    RemainingGuesses = 5;
-    wrongguess = [];
-    blanksandcorrect = [];
-    Game();
-}
+
